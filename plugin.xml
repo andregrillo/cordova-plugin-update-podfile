@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-update-podfile" version="1.0"
+	xmlns="http://apache.org/cordova/ns/plugins/1.0"
+	xmlns:android="http://schemas.android.com/apk/res/android">
+	<name>cordova-plugin-update-podfile</name>
+	
+	<platform name="ios">
+		<config-file parent="/*" target="config.xml">
+			<feature name="cordova-plugin-update-podfile">
+				<param name="ios-package" value="cordova-plugin-update-podfile" />
+			</feature>
+		</config-file>
+
+		<hook type="before_plugin_install" src="hook/podfileFix.js" />
+	</platform>
+</plugin>
