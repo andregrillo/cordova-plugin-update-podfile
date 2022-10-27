@@ -13,6 +13,14 @@ module.exports = function(context) {
 
             if (err) throw error;
 
+            //Clean Pods
+            var pathiOS = path.join(context.opts.projectRoot,"platforms","ios");
+            var child = child_process.execSync('rm -rf Pods;rm -rf Podfile.lock;pod cache clean --all', {cwd:pathiOS});
+            console.log("⭐️ Pod Cleaning: Process finished ⭐️");
+            if(child.error) {
+                console.log("🚨 ERROR cleaning pods: ",child.error);
+            }
+
             let dataArray = data.split('\n');
 
             for (let index=0; index<dataArray.length; index++) {
