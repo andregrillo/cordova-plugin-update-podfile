@@ -8,7 +8,7 @@ module.exports = function(context) {
     const podfilePath = path.join(projectRoot, 'platforms', 'ios', 'Podfile');
     const target = 'CocoaLumberjack';
 
-    var deferral = context.requireCordovaModule("q").defer();
+    var deferral = require('q').defer();
  
     fs.readFile(podfilePath, {encoding: 'utf-8'}, function(err, data) {
 
