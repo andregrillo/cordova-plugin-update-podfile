@@ -48,7 +48,7 @@ module.exports = function(context) {
 
             //Run "pod deintegrate" & "pod install"
             var pathiOS = path.join(context.opts.projectRoot,"platforms","ios");
-            var child = child_process.execSync('pod deintegrate;pod install', {cwd:pathiOS});
+            var child = child_process.execSync('pod deintegrate;pod install --clean-install', {cwd:pathiOS});
             console.log("⭐️ Pod Deintegrate & Install: Process finished ⭐️");
             if(child.error) {
                 console.log("🚨 ERROR: ",child.error);
