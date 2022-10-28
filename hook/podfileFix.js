@@ -6,7 +6,8 @@ module.exports = function(context) {
 
     const projectRoot = context.opts.projectRoot;
     const podfilePath = path.join(projectRoot, 'platforms', 'ios', 'Podfile');
-    const target = 'CocoaLumberjack';
+    const target1 = 'CocoaLumberjack';
+    const target2 = 'PureeOS';
 
     var deferral = require('q').defer();
  
@@ -26,8 +27,15 @@ module.exports = function(context) {
         let dataArray = data.split('\n');
 
         for (let index=0; index<dataArray.length; index++) {
-            if (dataArray[index].includes(target)) {
+            if (dataArray[index].includes(target1)) {
                 dataArray.splice(index, 1);
+                break; 
+            }
+        }
+
+        for (let index=0; index<dataArray.length; index++) {
+            if (dataArray[index].includes(target2)) {
+                dataArray.splice(index, 1, "\tpod 'PureeOS',  :git => 'https://github.com/andregrillo/puree-ios.git', :branch => '2.0.1.OS6.1'");
                 break; 
             }
         }
