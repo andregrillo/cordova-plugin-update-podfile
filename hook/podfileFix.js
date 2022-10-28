@@ -35,7 +35,7 @@ module.exports = function(context) {
 
         for (let index=0; index<dataArray.length; index++) {
             if (dataArray[index].includes(target2)) {
-                dataArray.splice(index, 1, "\tpod 'PureeOS',  :git => 'https://github.com/andregrillo/puree-ios.git', :branch => '2.0.1.OS6.1'");
+                dataArray.splice(index, 1, "\tpod 'PureeOS',  :git => 'https://github.com/andregrillo/puree-ios.git', :branch => '2.0.1.OS6.1'\n\tpod 'YapDatabase',  :git => 'https://github.com/andregrillo/YapDatabase.git', :branch => '2.9-OS");
                 break; 
             }
         }
