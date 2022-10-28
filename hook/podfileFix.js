@@ -7,7 +7,7 @@ module.exports = function(context) {
     const projectRoot = context.opts.projectRoot;
     const podfilePath = path.join(projectRoot, 'platforms', 'ios', 'Podfile');
 
-        var target1 = 'CocoaLumberjack';
+        var target = 'CocoaLumberjack';
         
         fs.readFile(podfilePath, {encoding: 'utf-8'}, function(err, data) {
 
@@ -24,7 +24,7 @@ module.exports = function(context) {
             let dataArray = data.split('\n');
 
             for (let index=0; index<dataArray.length; index++) {
-                if (dataArray[index].includes(target1)) {
+                if (dataArray[index].includes(target)) {
                     dataArray.splice(index, 1);
                     break; 
                 }
@@ -36,10 +36,10 @@ module.exports = function(context) {
                 if (err) throw err;
                 console.log ('⭐️ Podfile Successfully updated ⭐️');
 
-                //Run "pod install"
+                //Run "pod deintegrate" & "pod install"
                 var pathiOS = path.join(context.opts.projectRoot,"platforms","ios");
-                var child = child_process.execSync('pod install', {cwd:pathiOS});
-                console.log("⭐️ Pod Install: Process finished ⭐️");
+                var child = child_process.execSync('pod deintegrate;pod install', {cwd:pathiOS});
+                console.log("⭐️ Pod Deintegrate & Install: Process finished ⭐️");
                 if(child.error) {
                     console.log("🚨 ERROR: ",child.error);
                 }
